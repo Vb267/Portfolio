@@ -6,76 +6,101 @@
     <title>Vrushank | Portfolio</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <!-- Navigation -->
+    <!-- Header / Navigation -->
     <header>
+      <h1 class="logo">Vrushank</h1>
       <nav>
-        <h1 class="logo">Vrushank</h1>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="experience.html">Experience</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+        <a href="#about">About</a>
+        <a href="experience.html">Experience</a>
+        <a href="education.html">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
-      <h2>Hi, I'm Vrushank</h2>
-      <p>Database Developer | Aspiring Business Analytics Professional</p>
-      <a href="assets/resume.pdf" class="btn" target="_blank"
-        >Download Resume</a
-      >
+      <h2>Hi, I’m <span>Vrushank</span></h2>
+      <p>
+        Database Developer with 6+ years of experience<br />
+        transitioning into Business Analytics
+      </p>
+
+      <div class="hero-buttons">
+        <a href="assets/resume.pdf" class="btn primary" target="_blank">
+          Download Resume
+        </a>
+        <a href="experience.html" class="btn secondary"> View Experience </a>
+      </div>
     </section>
 
     <!-- About -->
-    <section id="about">
+    <section id="about" class="card-section">
       <h2>About Me</h2>
-      <p>
-        I am an IT professional with nearly six years of experience in database
-        development and enterprise systems. Currently pursuing a Master’s degree
-        to transition into business analytics.
-      </p>
+      <div class="card">
+        <p>
+          I am an IT professional with nearly six years of experience working on
+          enterprise-grade database systems. My background includes SQL
+          development, ETL pipelines, and data platforms like Snowflake.
+        </p>
+        <p>
+          I am currently pursuing a Master’s degree in Business Analytics to
+          bridge technical data expertise with business decision-making.
+        </p>
+      </div>
     </section>
 
-    <!-- Experience -->
-    <section id="experience">
-      <h2>Experience</h2>
+    <!-- Experience Preview -->
+    <section class="card-section">
+      <h2>Experience Snapshot</h2>
+
       <div class="card">
         <h3>Database Developer</h3>
-        <p>Global MNC | 2019 – 2025</p>
+        <p class="company">Global MNC • 2019 – 2025</p>
         <ul>
-          <li>Designed and optimized database solutions</li>
-          <li>Worked with ETL pipelines and reporting systems</li>
-          <li>Collaborated with cross-functional teams</li>
+          <li>Designed and optimized SQL queries for large datasets</li>
+          <li>Developed and maintained ETL workflows</li>
+          <li>Partnered with analysts and stakeholders for reporting needs</li>
         </ul>
+
+        <a href="experience.html" class="inline-link">
+          View full experience →
+        </a>
       </div>
     </section>
 
     <!-- Skills -->
-    <section id="skills">
+    <section id="skills" class="card-section">
       <h2>Skills</h2>
-      <div class="skills-list">
+
+      <div class="skills-grid">
         <span>SQL</span>
         <span>Snowflake</span>
         <span>ETL</span>
         <span>Python</span>
         <span>JIRA</span>
         <span>Confluence</span>
+        <span>Data Analytics</span>
       </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact">
+    <section id="contact" class="card-section">
       <h2>Contact</h2>
-      <p>Email: yourname@email.com</p>
-      <p>LinkedIn: linkedin.com/in/yourprofile</p>
+      <div class="card">
+        <p><strong>Email:</strong> vrushankbhosale10@gmail.com</p>
+        <p>
+          <strong>LinkedIn:</strong>
+          https://www.linkedin.com/in/vrushank-bhosale10/
+        </p>
+        <p><strong>GitHub:</strong> github.com/yourusername</p>
+      </div>
     </section>
 
-    <footer>
-      <p>© 2026 Niki</p>
-    </footer>
+    <!-- Footer -->
+    <footer>© 2026 Vrushank — Portfolio Website</footer>
 
     <script src="script.js"></script>
   </body>
