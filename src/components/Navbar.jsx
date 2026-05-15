@@ -4,8 +4,8 @@ import { useData } from '../context/DataContext';
 
 const NAV_LINKS = [
   { label: 'About', id: 'about' },
-  { label: 'Experience', id: 'experience' },
-  { label: 'Education', id: 'education' },
+  { label: 'Journey', id: 'journey' },
+  { label: 'Projects', id: 'projects' },
   { label: 'Skills', id: 'skills' },
   { label: 'Contact', id: 'contact' },
 ];
@@ -19,7 +19,7 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 60);
-      const sections = ['home', 'about', 'experience', 'education', 'skills', 'achievements', 'interests', 'contact'];
+      const sections = ['home', 'about', 'journey', 'projects', 'skills', 'contact'];
       let current = 'home';
       for (const id of sections) {
         const el = document.getElementById(id);
@@ -31,37 +31,22 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const scrollTo = (id) => {
-    setMenuOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const scrollTo = (id) => { setMenuOpen(false); document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); };
 
-  const initials = data.personal.name
-    .split(' ')
-    .map((n) => n[0])
-    .join('');
+  const initials = data.personal.name.split(' ').map((n) => n[0]).join('');
+  const overBlack = !scrolled;
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
-      }`}
-    >
+    <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'bg-white border-b border-gray-200 shadow-sm' : 'bg-transparent'}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
+
           {/* Logo */}
-          <button
-            onClick={() => scrollTo('home')}
-            className="flex items-center gap-2 group"
-          >
-            <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center shadow-sm group-hover:bg-blue-700 transition-colors">
-              <span className="text-white font-bold text-sm">{initials}</span>
+          <button onClick={() => scrollTo('home')} className="flex items-center gap-2.5 group">
+            <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 ${overBlack ? 'bg-white group-hover:neon-box-white' : 'bg-black'}`}>
+              <span className={`font-bold text-xs ${overBlack ? 'text-black' : 'text-white'}`}>{initials}</span>
             </div>
-            <span
-              className={`font-semibold text-sm hidden sm:block transition-colors ${
-                scrolled ? 'text-gray-800' : 'text-white'
-              }`}
-            >
+            <span className={`font-semibold text-sm hidden sm:block transition-colors ${overBlack ? 'text-white/80 group-hover:text-white' : 'text-black/70 group-hover:text-black'}`}>
               {data.personal.name.split(' ')[0]} Bhosale
             </span>
           </button>
@@ -72,22 +57,23 @@ export default function Navbar() {
               <button
                 key={id}
                 onClick={() => scrollTo(id)}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
                   activeSection === id
-                    ? scrolled
-                      ? 'text-blue-600 bg-blue-50'
-                      : 'text-white bg-white/15'
-                    : scrolled
-                    ? 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
-                    : 'text-white/75 hover:text-white hover:bg-white/10'
+                    ? overBlack ? 'text-white bg-white/10' : 'text-black bg-black/[0.07]'
+                    : overBlack ? 'text-white/55 hover:text-white hover:bg-white/10' : 'text-black/55 hover:text-black hover:bg-black/[0.06]'
                 }`}
               >
                 {label}
               </button>
             ))}
+            {/* Hire Me — neon glow on hover */}
             <a
               href={`mailto:${data.personal.email}`}
-              className="ml-2 px-4 py-2 bg-blue-600 text-white rounded-xl text-sm font-semibold hover:bg-blue-700 transition-colors shadow-sm"
+              className={`ml-3 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${
+                overBlack
+                  ? 'bg-white text-black neon-btn'
+                  : 'bg-black text-white neon-btn-dark'
+              }`}
             >
               Hire Me
             </a>
@@ -95,9 +81,7 @@ export default function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className={`md:hidden p-2 rounded-lg transition-colors ${
-              scrolled ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/10'
-            }`}
+            className={`md:hidden p-2 rounded-lg transition-colors ${overBlack ? 'text-white/70 hover:text-white hover:bg-white/10' : 'text-black/60 hover:text-black hover:bg-black/[0.06]'}`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -108,21 +92,16 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t shadow-lg">
-          <div className="px-4 py-3 space-y-1">
+        <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
+          <div className="px-4 py-3 space-y-0.5">
             {NAV_LINKS.map(({ label, id }) => (
-              <button
-                key={id}
-                onClick={() => scrollTo(id)}
-                className="block w-full text-left px-3 py-2.5 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg text-sm font-medium transition-colors"
-              >
+              <button key={id} onClick={() => scrollTo(id)}
+                className="block w-full text-left px-3 py-2.5 text-black/65 hover:text-black hover:bg-black/[0.05] rounded-lg text-sm font-medium transition-colors">
                 {label}
               </button>
             ))}
-            <a
-              href={`mailto:${data.personal.email}`}
-              className="block w-full text-center mt-2 px-4 py-2.5 bg-blue-600 text-white rounded-xl text-sm font-semibold hover:bg-blue-700 transition-colors"
-            >
+            <a href={`mailto:${data.personal.email}`}
+              className="block w-full text-center mt-2 px-4 py-2.5 bg-black text-white rounded-lg text-sm font-semibold neon-btn-dark transition-all duration-300">
               Hire Me
             </a>
           </div>

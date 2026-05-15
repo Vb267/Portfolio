@@ -2,43 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  scroll-behavior: smooth;
-}
+* { scroll-behavior: smooth; }
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-::-webkit-scrollbar {
-  width: 5px;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
 }
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #f0f0f0; }
+::-webkit-scrollbar-thumb { background: #bbbbbb; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #888888; }
+
+/* ─── Marquee ───────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
-::-webkit-scrollbar-thumb {
-  background: #94a3b8;
-  border-radius: 3px;
+
+/* ─── Fade up ───────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
+
+/* ─── Neon pulse ────────────────────────────────────── */
+@keyframes neonPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.65; }
 }
 
 @layer utilities {
-  .animate-fade-up {
-    animation: fadeUp 0.6s ease-out forwards;
-  }
+  .animate-marquee  { animation: marquee 40s linear infinite; }
+  .animate-fade-up  { animation: fadeUp 0.6s ease-out forwards; }
+  .animate-neon-pulse { animation: neonPulse 2.5s ease-in-out infinite; }
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ─── Neon text glows ───────────────────────────────── */
+.neon-white   { text-shadow: 0 0 8px rgba(255,255,255,0.45), 0 0 22px rgba(255,255,255,0.18); }
+.neon-blue    { text-shadow: 0 0 8px rgba(96,165,250,1),     0 0 22px rgba(59,130,246,0.65),  0 0 50px rgba(59,130,246,0.25); }
+.neon-violet  { text-shadow: 0 0 8px rgba(167,139,250,1),    0 0 22px rgba(139,92,246,0.65),  0 0 50px rgba(139,92,246,0.25); }
+.neon-emerald { text-shadow: 0 0 8px rgba(52,211,153,1),     0 0 22px rgba(16,185,129,0.65),  0 0 50px rgba(16,185,129,0.25); }
+
+/* ─── Neon box glows (static) ───────────────────────── */
+.neon-box-blue    { box-shadow: 0 0 8px rgba(59,130,246,0.55),  0 0 22px rgba(59,130,246,0.25),  0 0 45px rgba(59,130,246,0.1); }
+.neon-box-violet  { box-shadow: 0 0 8px rgba(139,92,246,0.55),  0 0 22px rgba(139,92,246,0.25),  0 0 45px rgba(139,92,246,0.1); }
+.neon-box-emerald { box-shadow: 0 0 8px rgba(16,185,129,0.55),  0 0 22px rgba(16,185,129,0.25),  0 0 45px rgba(16,185,129,0.1); }
+.neon-box-amber   { box-shadow: 0 0 8px rgba(245,158,11,0.55),  0 0 22px rgba(245,158,11,0.25),  0 0 45px rgba(245,158,11,0.1); }
+.neon-box-white   { box-shadow: 0 0 8px rgba(255,255,255,0.55), 0 0 22px rgba(255,255,255,0.25), 0 0 45px rgba(255,255,255,0.1); }
+
+/* ─── Neon hover glows on cards ─────────────────────── */
+.hover-neon-blue:hover    { box-shadow: 0 0 12px rgba(59,130,246,0.7),  0 0 30px rgba(59,130,246,0.35),  0 0 60px rgba(59,130,246,0.12); border-color: #93c5fd !important; }
+.hover-neon-violet:hover  { box-shadow: 0 0 12px rgba(139,92,246,0.7),  0 0 30px rgba(139,92,246,0.35),  0 0 60px rgba(139,92,246,0.12); border-color: #c4b5fd !important; }
+.hover-neon-emerald:hover { box-shadow: 0 0 12px rgba(16,185,129,0.7),  0 0 30px rgba(16,185,129,0.35),  0 0 60px rgba(16,185,129,0.12); border-color: #6ee7b7 !important; }
+.hover-neon-amber:hover   { box-shadow: 0 0 12px rgba(245,158,11,0.7),  0 0 30px rgba(245,158,11,0.35),  0 0 60px rgba(245,158,11,0.12); border-color: #fcd34d !important; }
+
+/* ─── Neon tag hover ────────────────────────────────── */
+.neon-tag-blue:hover    { box-shadow: 0 0 8px rgba(59,130,246,0.8),  0 0 18px rgba(59,130,246,0.4); }
+.neon-tag-violet:hover  { box-shadow: 0 0 8px rgba(139,92,246,0.8),  0 0 18px rgba(139,92,246,0.4); }
+.neon-tag-emerald:hover { box-shadow: 0 0 8px rgba(16,185,129,0.8),  0 0 18px rgba(16,185,129,0.4); }
+.neon-tag-amber:hover   { box-shadow: 0 0 8px rgba(245,158,11,0.8),  0 0 18px rgba(245,158,11,0.4); }
+
+/* ─── Neon button (dark bg) ─────────────────────────── */
+.neon-btn:hover { box-shadow: 0 0 12px rgba(255,255,255,0.55), 0 0 28px rgba(255,255,255,0.25); }
+
+/* ─── Neon CTA button (light bg) ───────────────────── */
+.neon-btn-dark:hover { box-shadow: 0 0 12px rgba(0,0,0,0.3), 0 0 28px rgba(0,0,0,0.12); }
+
+/* ─── Neon input focus ──────────────────────────────── */
+.neon-input:focus {
+  outline: none;
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.15), 0 0 12px rgba(59,130,246,0.35);
 }
+
+/* ─── Neon icon card (TechStack) ───────────────────── */
+.neon-icon:hover { box-shadow: 0 0 10px rgba(255,255,255,0.5), 0 0 22px rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3) !important; }

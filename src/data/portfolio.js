@@ -8,7 +8,6 @@ export const defaultData = {
     linkedin: "https://www.linkedin.com/in/vrushank-bhosale",
     cvUrl: "",
     photo: "",
-    availability: "Available from June 2026",
     profileSummary:
       "Analytical postgraduate with experience in data analysis, performance reporting, and process improvement within financial services and technology environments. Pursuing an MSc in Business Analytics at UCD, combining strong quantitative ability with strategic problem-solving and cross-functional collaboration. Skilled in analysing data to deliver actionable insights, supporting operational goals, and contributing to process improvement initiatives. Passionate about fintech innovation and eager to develop into a future leader in financial services technology.",
   },
@@ -20,7 +19,7 @@ export const defaultData = {
       school: "University College Dublin",
       subtitle: "Michael Smurfit Graduate Business School",
       location: "Dublin, Ireland",
-      period: "Expected Sep 2026",
+      period: "Sep 2025 – Sep 2026",
       grade: "",
       modules: ["Business Analytics", "Statistics", "Financial Analysis", "Data Interpretation"],
       highlights: [
@@ -34,7 +33,7 @@ export const defaultData = {
       school: "D.Y. Patil School of Engineering",
       subtitle: "Pune, India",
       location: "Pune, India",
-      period: "Jun 2024",
+      period: "Jun 2020 – Jun 2024",
       grade: "CGPA: 8.4 / 10",
       modules: [],
       highlights: [],
@@ -73,6 +72,39 @@ export const defaultData = {
         "Collaborated with cross-functional stakeholders during system enhancements, translating technical updates into clear user guidance.",
       ],
       logo: "",
+    },
+  ],
+
+  projects: [
+    {
+      id: 1,
+      title: "Financial Data Pipeline Automation",
+      description:
+        "Automated ETL pipeline processing 5M+ financial records using Python and SQL. Implemented data validation and reconciliation checks that reduced reporting cycle time by 30% and discrepancies by 10%.",
+      tech: ["Python", "SQL", "Snowflake", "ETL"],
+      image: "/images/project1.jpg",
+      link: "",
+      github: "",
+    },
+    {
+      id: 2,
+      title: "KPI Analytics Dashboard",
+      description:
+        "Designed and built interactive Tableau dashboards for real-time KPI tracking across business units. Improved reporting visibility and reduced decision turnaround time by 25% through standardised templates.",
+      tech: ["Tableau", "Advanced Excel", "SQL", "Data Visualisation"],
+      image: "/images/project2.jpg",
+      link: "",
+      github: "",
+    },
+    {
+      id: 3,
+      title: "Research Publication – ICITCT 2024",
+      description:
+        "Published and presented original research at the International Conference on Innovative Technologies in Computing and Communications Technology (ICITCT) 2024.",
+      tech: ["Research", "Data Analysis", "Technical Writing"],
+      image: "/images/project3.jpg",
+      link: "",
+      github: "",
     },
   ],
 
