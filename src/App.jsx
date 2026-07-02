@@ -7,6 +7,8 @@ import Journey from './components/Journey';
 import TechStack from './components/TechStack';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
+import Achievements from './components/Achievements';
+import Interests from './components/Interests';
 import Contact from './components/Contact';
 import AdminPanel from './components/AdminPanel';
 
@@ -33,6 +35,8 @@ function Portfolio() {
         <TechStack />
         <Projects />
         <Skills />
+        <Achievements />
+        <Interests />
         <Contact />
       </main>
       <footer className="bg-black py-8">

@@ -31,7 +31,7 @@ export default function Contact() {
       const subject = encodeURIComponent(formData.subject || `Portfolio Contact from ${formData.name}`);
       const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
       window.location.href = `mailto:${personal.email}?subject=${subject}&body=${body}`;
-      setStatus('success');
+      setStatus('mailto');
       return;
     }
     try {
@@ -109,17 +109,25 @@ export default function Contact() {
 
           {/* Form */}
           <div className="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover-neon-blue transition-all duration-300">
-            {status === 'success' ? (
+            {(status === 'success' || status === 'mailto') ? (
               <div className="flex flex-col items-center justify-center py-10 gap-4 text-center">
                 <div className="w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center neon-box-emerald">
-                  <CheckCircle size={28} className="text-emerald-500" />
+                  {status === 'mailto'
+                    ? <Mail size={28} className="text-emerald-500" />
+                    : <CheckCircle size={28} className="text-emerald-500" />}
                 </div>
                 <div>
-                  <p className="text-black font-semibold mb-1">Message sent!</p>
-                  <p className="text-gray-500 text-sm">Thank you for reaching out. I&apos;ll get back to you soon.</p>
+                  <p className="text-black font-semibold mb-1">
+                    {status === 'mailto' ? 'Opening your email app…' : 'Message sent!'}
+                  </p>
+                  <p className="text-gray-500 text-sm">
+                    {status === 'mailto'
+                      ? `Your message was drafted in your email client — just press send. If nothing opened, email me directly at ${personal.email}.`
+                      : 'Thank you for reaching out. I\'ll get back to you soon.'}
+                  </p>
                 </div>
                 <button onClick={() => setStatus('idle')} className="mt-2 text-gray-400 hover:text-black text-sm transition-colors">
-                  Send another message
+                  {status === 'mailto' ? 'Back to form' : 'Send another message'}
                 </button>
               </div>
             ) : (

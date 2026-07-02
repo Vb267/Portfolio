@@ -1,4 +1,5 @@
-import { Mail, Phone, MapPin, Linkedin, TrendingUp, Search, Lightbulb, Users } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Mail, Phone, MapPin, Linkedin, TrendingUp, Search, Lightbulb, Users, X } from 'lucide-react';
 import { useData } from '../context/DataContext';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -13,8 +14,16 @@ export default function About() {
   const { data } = useData();
   const { personal } = data;
   const { ref, visible } = useScrollAnimation();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   const initials = personal.name.split(' ').map((n) => n[0]).join('');
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const onKey = (e) => e.key === 'Escape' && setLightboxOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [lightboxOpen]);
 
   return (
     <section id="about" className="py-24 bg-white">
@@ -34,11 +43,18 @@ export default function About() {
           {/* Left: avatar + contact */}
           <div className="md:col-span-2 flex flex-col items-center">
             {personal.photo ? (
-              <img
-                src={personal.photo}
-                alt={personal.name}
-                className="w-44 h-44 rounded-2xl object-cover border border-gray-200"
-              />
+              <button
+                type="button"
+                onClick={() => setLightboxOpen(true)}
+                className="group relative w-44 h-44 rounded-2xl overflow-hidden border border-gray-200 hover-neon-blue transition-all duration-300 cursor-zoom-in"
+                aria-label="Enlarge profile photo"
+              >
+                <img
+                  src={personal.photo}
+                  alt={personal.name}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </button>
             ) : (
               <div className="w-44 h-44 rounded-2xl bg-gray-100 border border-gray-200 flex items-center justify-center">
                 <span className="text-5xl font-extrabold text-gray-300">{initials}</span>
@@ -108,6 +124,29 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      {lightboxOpen && personal.photo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-6 animate-fade-up"
+          style={{ animationDuration: '0.2s' }}
+          onClick={() => setLightboxOpen(false)}
+        >
+          <button
+            type="button"
+            onClick={() => setLightboxOpen(false)}
+            className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+            aria-label="Close"
+          >
+            <X size={20} />
+          </button>
+          <img
+            src={personal.photo}
+            alt={personal.name}
+            onClick={(e) => e.stopPropagation()}
+            className="max-w-full max-h-full rounded-2xl object-contain neon-box-white"
+          />
+        </div>
+      )}
     </section>
   );
 }

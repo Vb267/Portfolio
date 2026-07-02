@@ -1,16 +1,36 @@
+import { useState } from 'react';
 import { Briefcase, GraduationCap, Calendar, MapPin } from 'lucide-react';
 import { useData } from '../context/DataContext';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+
+function LogoBadge({ src, alt, FallbackIcon, iconClass }) {
+  const [error, setError] = useState(false);
+  if (!src || error) {
+    return (
+      <div className="w-10 h-10 rounded-lg bg-gray-50 border border-gray-100 flex items-center justify-center flex-shrink-0">
+        <FallbackIcon size={17} className={iconClass} />
+      </div>
+    );
+  }
+  return (
+    <div className="w-10 h-10 rounded-lg bg-white border border-gray-100 flex items-center justify-center flex-shrink-0 overflow-hidden">
+      <img src={src} alt={alt} className="w-full h-full object-contain p-1" onError={() => setError(true)} />
+    </div>
+  );
+}
 
 function ExperienceCard({ job }) {
   return (
     <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover-neon-blue transition-all duration-300 w-full">
       <div className="h-1 bg-gradient-to-r from-blue-500 to-blue-400 neon-box-blue" />
       <div className="p-6">
-        <div className="flex items-start justify-between gap-3 mb-2">
-          <h3 className="text-black font-bold text-base leading-snug">{job.title}</h3>
-          <div className="flex items-center gap-1.5 text-gray-400 text-xs whitespace-nowrap flex-shrink-0">
-            <Calendar size={11} />{job.period}
+        <div className="flex items-start gap-3 mb-2">
+          <LogoBadge src={job.logo} alt={job.company} FallbackIcon={Briefcase} iconClass="text-blue-500" />
+          <div className="flex-1 min-w-0 flex items-start justify-between gap-3">
+            <h3 className="text-black font-bold text-base leading-snug">{job.title}</h3>
+            <div className="flex items-center gap-1.5 text-gray-400 text-xs whitespace-nowrap flex-shrink-0">
+              <Calendar size={11} />{job.period}
+            </div>
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mb-4">
@@ -42,10 +62,13 @@ function EducationCard({ edu }) {
     <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover-neon-violet transition-all duration-300 w-full">
       <div className="h-1 bg-gradient-to-r from-violet-500 to-violet-400 neon-box-violet" />
       <div className="p-6">
-        <div className="flex items-start justify-between gap-3 mb-2">
-          <h3 className="text-black font-bold text-base leading-snug">{edu.degree}</h3>
-          <div className="flex items-center gap-1.5 text-gray-400 text-xs whitespace-nowrap flex-shrink-0">
-            <Calendar size={11} />{edu.period}
+        <div className="flex items-start gap-3 mb-2">
+          <LogoBadge src={edu.logo} alt={edu.school} FallbackIcon={GraduationCap} iconClass="text-violet-500" />
+          <div className="flex-1 min-w-0 flex items-start justify-between gap-3">
+            <h3 className="text-black font-bold text-base leading-snug">{edu.degree}</h3>
+            <div className="flex items-center gap-1.5 text-gray-400 text-xs whitespace-nowrap flex-shrink-0">
+              <Calendar size={11} />{edu.period}
+            </div>
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mb-4">

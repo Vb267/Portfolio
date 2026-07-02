@@ -594,9 +594,6 @@ export default function AdminPanel({ onClose }) {
             >
               Login
             </button>
-            <p className="text-gray-400 text-xs text-center mt-4">
-              Default password: <code className="bg-gray-100 px-1 rounded">vrushank2024</code>
-            </p>
           </form>
         </div>
       </div>

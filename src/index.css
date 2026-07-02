@@ -85,3 +85,21 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── Neon icon card (TechStack) ───────────────────── */
 .neon-icon:hover { box-shadow: 0 0 10px rgba(255,255,255,0.5), 0 0 22px rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.3) !important; }
+
+/* ─── Respect reduced-motion preferences ────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-marquee,
+  .animate-fade-up,
+  .animate-neon-pulse,
+  .animate-bounce {
+    animation: none !important;
+  }
+}

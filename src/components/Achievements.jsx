@@ -8,7 +8,7 @@ function AchievementCard({ item, index }) {
   return (
     <div
       ref={ref}
-      className={`bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md hover:border-amber-100 transition-all duration-700 flex items-start gap-4 ${
+      className={`bg-white rounded-2xl p-6 border border-gray-200 hover-neon-amber transition-all duration-300 flex items-start gap-4 ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
       style={{ transitionDelay: `${index * 120}ms` }}
@@ -18,13 +18,13 @@ function AchievementCard({ item, index }) {
       </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="font-bold text-gray-900 text-base leading-tight">{item.title}</h3>
+          <h3 className="font-bold text-black text-base leading-tight">{item.title}</h3>
           {item.link && (
             <a
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-600 flex-shrink-0"
+              className="text-gray-400 hover:text-black flex-shrink-0 transition-colors"
             >
               <ExternalLink size={14} />
             </a>
@@ -43,12 +43,12 @@ export default function Achievements() {
   if (!data.achievements?.length) return null;
 
   return (
-    <section id="achievements" className="py-24 bg-slate-50">
+    <section id="achievements" className="py-24 bg-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
-          <p className="text-blue-600 font-semibold text-xs uppercase tracking-widest mb-2">Recognition</p>
-          <h2 className="text-4xl font-extrabold text-gray-900">Achievements</h2>
-          <div className="w-14 h-1 bg-blue-600 mx-auto mt-4 rounded-full" />
+          <p className="text-gray-400 font-medium text-xs uppercase tracking-widest mb-3">Recognition</p>
+          <h2 className="text-4xl font-extrabold text-black">Achievements</h2>
+          <div className="w-10 h-px bg-black mx-auto mt-5" />
         </div>
 
         <div className="grid sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
