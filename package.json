@@ -3,12 +3,12 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://vrushankbhosale.github.io/vrushank-portfolio",
+  "homepage": "https://vb267.github.io/Portfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "VITE_BASE_URL=/vrushank-portfolio/ vite build && gh-pages -d dist"
+    "deploy": "VITE_BASE_URL=/Portfolio/ vite build && gh-pages -d dist"
   },
   "dependencies": {
     "lucide-react": "^0.474.0",
