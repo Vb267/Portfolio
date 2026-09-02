@@ -1,4 +1,4 @@
-import { Heart, Users } from 'lucide-react';
+import { Heart, Users, Briefcase } from 'lucide-react';
 import { useData } from '../context/DataContext';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -6,6 +6,8 @@ export default function Interests() {
   const { data } = useData();
   const { ref: leftRef, visible: leftVisible } = useScrollAnimation();
   const { ref: rightRef, visible: rightVisible } = useScrollAnimation();
+  const { ref: thirdRef, visible: thirdVisible } = useScrollAnimation();
+  const partTimeActivities = data.partTimeActivities || [];
 
   return (
     <section id="interests" className="py-24 bg-gray-50">
@@ -16,7 +18,7 @@ export default function Interests() {
           <div className="w-10 h-px bg-black mx-auto mt-5" />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-3 gap-12">
           {/* Professional interests */}
           <div
             ref={leftRef}
@@ -59,6 +61,30 @@ export default function Interests() {
                 >
                   <span className="w-2 h-2 bg-emerald-500 rounded-full flex-shrink-0" />
                   <span className="text-gray-700 font-medium text-sm">{v.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Part-time Activities */}
+          <div
+            ref={thirdRef}
+            className={`transition-all duration-700 delay-300 ${thirdVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            <div className="flex items-center gap-2.5 mb-6">
+              <div className="w-9 h-9 bg-violet-50 rounded-xl flex items-center justify-center">
+                <Briefcase size={17} className="text-violet-600" />
+              </div>
+              <h3 className="text-xl font-bold text-black">Part-time Activities</h3>
+            </div>
+            <div className="space-y-3">
+              {partTimeActivities.map((p) => (
+                <div
+                  key={p.id}
+                  className="flex flex-col gap-0.5 px-4 py-3 bg-white rounded-xl border border-gray-200 hover-neon-violet transition-all duration-300"
+                >
+                  <span className="text-gray-700 font-medium text-sm">{p.role} · {p.company}</span>
+                  <span className="text-gray-400 text-xs">{p.period}</span>
                 </div>
               ))}
             </div>

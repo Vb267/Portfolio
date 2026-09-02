@@ -41,7 +41,14 @@ function ProjectCard({ project, index }) {
 
       {/* Content */}
       <div className="p-5 flex flex-col flex-1">
-        <h3 className="text-black font-bold text-base mb-2 leading-snug">{project.title}</h3>
+        <h3 className="text-black font-bold text-base mb-1 leading-snug">{project.title}</h3>
+        {(project.period || project.collaboration) && (
+          <p className="text-gray-400 text-[11px] font-medium mb-2">
+            {project.period}
+            {project.period && project.collaboration && ' · '}
+            {project.collaboration && `with ${project.collaboration}`}
+          </p>
+        )}
         <p className="text-gray-600 text-[13px] leading-relaxed mb-4 flex-1">{project.description}</p>
         <div className="flex flex-wrap gap-1.5 mb-4">
           {project.tech.map((t, i) => (

@@ -24,6 +24,8 @@ export const defaultData = {
       modules: ["Business Analytics", "Statistics", "Financial Analysis", "Data Interpretation"],
       highlights: [
         "Built KPI dashboards and conducted structured analyses to support strategic decision-making",
+        "Modelled Ireland's national afforestation target through the Ireland Afforestation Programme, an interactive Tableau decision tool balancing carbon capture, land suitability, and farmer incentives",
+        "Led The Limits of Learned Optimisation, a critical study benchmarking reinforcement learning against classical methods for job shop scheduling, in collaboration with UCD",
       ],
       logo: "https://www.google.com/s2/favicons?domain=ucd.ie&sz=128",
     },
@@ -34,10 +36,13 @@ export const defaultData = {
       subtitle: "Pune, India",
       location: "Pune, India",
       period: "Jun 2020 – Jun 2024",
-      grade: "CGPA: 8.4 / 10",
-      modules: [],
-      highlights: [],
-      logo: "",
+      grade: "GPA: 3.54",
+      modules: ["FastAPI", "Python", "Django", "SQL", "React"],
+      highlights: [
+        "Built a networking platform in final year using FastAPI, Python, Django, SQL, and React.",
+        "Developed an AI chatbot for automated customer assistance.",
+      ],
+      logo: "/images/pune-university-logo.jpg",
     },
   ],
 
@@ -78,21 +83,23 @@ export const defaultData = {
   projects: [
     {
       id: 1,
-      title: "Financial Data Pipeline Automation",
+      title: "The Limits of Learned Optimisation",
       description:
-        "Automated ETL pipeline processing 5M+ financial records using Python and SQL. Implemented data validation and reconciliation checks that reduced reporting cycle time by 30% and discrepancies by 10%.",
-      tech: ["Python", "SQL", "Snowflake", "ETL"],
-      image: "/images/project1.jpg",
+        "A critical study of whether reinforcement learning genuinely beats classical methods at job shop scheduling. Pairing a systematic review of twenty papers with a controlled fair-comparison benchmark, it exposes five practices that inflate reported results and delivers a six-point protocol for evaluating optimisation claims honestly, doubling as a due-diligence checklist for scheduling solutions.",
+      tech: ["Reinforcement Learning", "Python", "SQL", "Tableau", "AI Research"],
+      period: "May 2026 – Aug 2026",
+      collaboration: "University College Dublin (UCD)",
+      image: "/images/CapstoneProject.png",
       link: "",
       github: "",
     },
     {
       id: 2,
-      title: "KPI Analytics Dashboard",
+      title: "Financial Data Pipeline Automation",
       description:
-        "Designed and built interactive Tableau dashboards for real-time KPI tracking across business units. Improved reporting visibility and reduced decision turnaround time by 25% through standardised templates.",
-      tech: ["Tableau", "Advanced Excel", "SQL", "Data Visualisation"],
-      image: "/images/project2.jpg",
+        "Automated ETL pipeline processing 5M+ financial records using Python and SQL. Implemented data validation and reconciliation checks that reduced reporting cycle time by 30% and discrepancies by 10%.",
+      tech: ["Python", "SQL", "Snowflake", "ETL"],
+      image: "/images/project2.png",
       link: "",
       github: "",
     },
@@ -102,8 +109,9 @@ export const defaultData = {
       description:
         "Turned a national climate target into an interactive decision tool. Built a Tableau dashboard and analytical report modelling Ireland's goal to raise forest cover from 11.6% to 18% by 2027, balancing carbon capture, land suitability, and farmer incentives across 15 sites.",
       tech: ["Tableau", "Data Modelling", "GIS Analysis", "Sustainability Analytics"],
+      period: "Feb 2026 – April 2026",
       image: "/images/project3.png",
-      link: "",
+      link: "https://public.tableau.com/views/Afforestation_Workbook_Main/Story1?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link",
       github: "",
     },
   ],
@@ -157,6 +165,14 @@ export const defaultData = {
       year: "2024",
       link: "",
     },
+    {
+      id: 2,
+      title: "UCD Advantage Award",
+      description:
+        "Recognises growth beyond academics, from volunteering and leadership to community engagement and personal well-being, a reminder that growth doesn't just happen in the classroom.",
+      year: "2026",
+      link: "",
+    },
   ],
 
   interests: [
@@ -170,5 +186,9 @@ export const defaultData = {
     { id: 1, name: "NSS Volunteer" },
     { id: 2, name: "UCD Food Committee" },
     { id: 3, name: "UCD Badminton Club" },
+  ],
+
+  partTimeActivities: [
+    { id: 1, role: "Retail Assistant", company: "Dunnes Stores", period: "Nov 2025 – Present" },
   ],
 };

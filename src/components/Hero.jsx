@@ -1,11 +1,5 @@
-import { Download, Mail, ArrowDown, ExternalLink, MapPin } from 'lucide-react';
+import { Mail, ArrowDown, ExternalLink, MapPin } from 'lucide-react';
 import { useData } from '../context/DataContext';
-
-const STATS = [
-  { value: '2+',   label: 'Companies',           valueClass: 'text-blue-400 neon-blue' },
-  { value: '10M+', label: 'Records Analysed',    valueClass: 'text-violet-400 neon-violet' },
-  { value: '30%',  label: 'Avg Efficiency Gain', valueClass: 'text-emerald-400 neon-emerald' },
-];
 
 export default function Hero() {
   const { data } = useData();
@@ -67,24 +61,6 @@ export default function Hero() {
 
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-16">
-          {personal.cvUrl ? (
-            <a
-              href={personal.cvUrl}
-              download
-              className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-lg font-semibold text-sm neon-btn transition-all duration-300"
-            >
-              <Download size={15} />
-              Download CV
-            </a>
-          ) : (
-            <button
-              className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-lg font-semibold text-sm opacity-40 cursor-default"
-              title="Upload your CV URL via the admin panel"
-            >
-              <Download size={15} />
-              Download CV
-            </button>
-          )}
           <button
             onClick={() => scrollTo('contact')}
             className="flex items-center gap-2 px-6 py-3 border border-white/25 text-white/75 rounded-lg font-semibold text-sm hover:bg-white/10 hover:text-white hover:border-white/50 neon-btn transition-all duration-300"
@@ -103,16 +79,6 @@ export default function Hero() {
               LinkedIn
             </a>
           )}
-        </div>
-
-        {/* Neon stats */}
-        <div className="inline-flex divide-x divide-white/10 border border-white/15 rounded-2xl overflow-hidden neon-box-blue">
-          {STATS.map((stat, i) => (
-            <div key={i} className="px-8 py-4 text-center">
-              <div className={`text-2xl font-extrabold ${stat.valueClass}`}>{stat.value}</div>
-              <div className="text-white/40 text-xs mt-1 font-medium">{stat.label}</div>
-            </div>
-          ))}
         </div>
       </div>
 
